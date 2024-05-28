@@ -2,7 +2,7 @@ import Plotly from 'plotly';
 
 const template = `
 <div>
-    <div id="plot"></div>
+    <div ref="plotdiv"></div>
 </div>
 `;
 
@@ -12,11 +12,11 @@ export default {
     template,
     mounted() {
         console.log('mounted', this.traces);
-        Plotly.react('plot', this.traces);
+        Plotly.react(this.$refs.plotdiv, this.traces);
     },
     watch: {
         traces() {
-            Plotly.react('plot', this.traces);
+            Plotly.react(this.$refs.plotdiv, this.traces);
         }
     }
 };
